@@ -6,7 +6,7 @@ const nextConfig: NextConfig = {
   images: {
     unoptimized: true, // ← next exportでは画像最適化を無効化
   },
-  basePath: process.env.GITHUB_REPOSITORY?.split("/")[1] || "", // GitHub Pages用 basePath 自動設定
+  basePath: `/${process.env.GITHUB_REPOSITORY?.split("/")[1] || ""}`,
 };
 
 export default nextConfig;
