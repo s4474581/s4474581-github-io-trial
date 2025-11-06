@@ -12,9 +12,9 @@ const nextConfig: NextConfig = {
   },
 
   // GitHub Pages の場合だけ basePath を設定
-  basePath: isProd
-    ? `/${process.env.GITHUB_REPOSITORY?.split("/")[1] || ""}`
-    : "",
+  // basePath: isProd
+  //   ? `/${process.env.GITHUB_REPOSITORY?.split("/")[1] || ""}`
+  //   : "",
 };
 
 export default nextConfig;
