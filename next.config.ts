@@ -1,17 +1,20 @@
 import type { NextConfig } from "next";
 
+const isProd = process.env.NODE_ENV === "production";
+
 const nextConfig: NextConfig = {
-  /* config options here */
-  output: "export", // ← これが重要！
-  basePath: "/s4474581-github-io-trial", // ← GitHub Pagesのリポジトリ名に合わせる
+  // 本番環境では静的エクスポートを有効化
+  ...(isProd && { output: "export" }),
+
   images: {
-    unoptimized: true,
+    // 静的エクスポート時は画像最適化を無効化
+    unoptimized: isProd,
   },
-  // output: "export", // ← これが重要！
-  // images: {
-  //   unoptimized: true, // ← next exportでは画像最適化を無効化
-  // },
-  // basePath: `/${process.env.GITHUB_REPOSITORY?.split("/")[1] || ""}`,
+
+  // GitHub Pages の場合だけ basePath を設定
+  basePath: isProd
+    ? `/${process.env.GITHUB_REPOSITORY?.split("/")[1] || ""}`
+    : "",
 };
 
 export default nextConfig;
